@@ -1,0 +1,38 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    networks:
+      - flipkart-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./backend/config/config.env.example
+    environment:
+      PORT: "${BACKEND_PORT}"
+      MONGO_URI: "mongodb://mongodb:27017/flipkart"
+    networks:
+      - flipkart-network
+
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - flipkart-mongo-data:/data/db # 💡 Maps to the new volume block
+    networks:
+      - flipkart-network
+
+
+volumes:
+  flipkart-mongo-data:
+
+networks:
+  flipkart-network:
