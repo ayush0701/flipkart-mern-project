@@ -24,6 +24,7 @@ COPY --from=builder /app/node_modules ./node_modules
 # Copy application source code from builder stage
 COPY --from=builder /app .
 
+USER flipkart-user
 
 EXPOSE 4000
 
