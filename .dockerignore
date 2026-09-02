@@ -1,0 +1,33 @@
+# Node & Package Managers
+**/node_modules
+**/.npm
+**/.yarn
+**/.pnpm-store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production Build Outputs (Avoid copying host builds into containers)
+**/build
+**/dist
+
+# Environment Files & Local Secrets
+**/.env
+**/.env.*
+!**/.env.example
+backend/config/config.env
+
+# Git & Version Control
+.git
+.gitignore
+.github
+
+# Docker Specific Files (Prevent recursive context copies)
+**/Dockerfile*
+**/docker-compose*.yml
+.dockerignore
+
+# Documentation & Markdown
+**/*.md
+LICENSE
+
